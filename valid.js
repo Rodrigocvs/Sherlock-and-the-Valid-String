@@ -1,68 +1,84 @@
 function getData(){
     var s = document.getElementById("string").value;
-}
-
-
-
-
-let s = "aabbccddeefghi";
-class Letter {
-    constructor (name, cant) {
-    this.name = name;
-    this.cant = cant;
-    }
-};
-
-string = s.split(''); // arreglo de caracteres
+    string = s.split(''); // arreglo de caracteres
 string = string.sort(); 
 
 string2 = [];
 
-var l = new Letter(string[0] , 1);
-string2.push(l);
+
+string2.push(1);
 dist=0;
 j=0;
 for (i=0 ; i< (string.length)-1 ; i++) {
     
     if(string[i] !== string[i+1]) {
         j++;
-        //console.log("ENTRO POR IF");
-        var l = new Letter(string[i+1], 1);
-        string2.push(l);
+        string2.push(1);
         dist = dist + 1;
     }
     else {
-        //console.log('ENTRO POR ELSE')
-        string2[j].cant= string2[j].cant + 1;
+        string2[j]= string2[j] + 1;
     }
    
 };
-console.log(string2.lenght); //PORQUEEEEE
+
+string2 = string2.sort();
+
+
+        //console.log("ACCCCCAAAAAA")
+
+        //console.log(string);
+       // console.log(string2);
+
 //Validacion
 b=true;
-v = string2[0].cant;
-tot=0;
-control=0;
+v = string2[0];
+dif=1;
 
-for (t=0; t< (string2.length) ; t++) {
-    if (string2[t].cant !== v) {
-        b=false;
+//Contar las frecuencias diferentes, ent si tengo mayor que 3 es falso, si tengo 2 hago control, si tengo 1 es valido
+for (i=0; i< (string2.length)-1 ; i++) {
+    if (string2[i] !== v) {
+        dif= dif++ ;
+        v = string2[i+1];
     }
-    tot= tot + string2[t].cant;
+    
 };
 
-control = tot % dist;
+console.log(string2)
+console.log(dist)
 
-if (control > 1) {
-    b = false;
+control = string2[0];
+if (dist < 3) {
+    if (dif = 2) {
+        for(i=0 ; i< (string2.length) -1 ; i++) {
+            if (control !== string2[i+1]) {
+                if ( ((string2[i+1] - string2[i]) === 1) && ((i+1)== string2.length -1 ) ) {
+                    b= true ;
+                }
+                else {
+                    b= false;
+                }
+            }
+        }
+    }
 }
 else {
-    b = true;
+    b=false;
 }
+
+
+
 if(b==true){
-    prompt("Es valido");
+    alert("Es valido");
 }
 else {
-    prompt("No es valido");
-}
+    alert("No es valido");
+};
+
+
+    
+};
+
+//let s = "aabbccczzz";
+
 
